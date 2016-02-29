@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:concordion="http://www.concordion.org/2007/concordion">
+<body>
+	<div class="example">
+		DADO um usuário já cadastrado com o nome completo
+		"<span concordion:set="#nomeCompleto">Maria da Silva</span>"
+		<br />
+		E data de nascimento
+		<span concordion:set="#dataNascimento">15/01/2015</span><br />
+		<span concordion:execute="criarUsuario(#nomeCompleto, #dataNascimento)"></span>
+		<span concordion:execute="cadastrarNumerologiaDoNomeDoUsuario()"></span>
+
+		QUANDO o usuário obtém o número respectivo ao seu nome completo
+		<span concordion:execute="#resultado = obterNumerologiaNomeCompleto()"></span>
+		<br />
+
+		ENTAO o número obtido é
+		<span concordion:assertEquals="#resultado">2</span>
+		<br />
+		<span concordion:execute="excluirUsuario()"></span>
+	</div>
+</body>
+</html>
